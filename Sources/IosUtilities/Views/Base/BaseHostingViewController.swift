@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class BaseHostingViewController<Content>: UIHostingController<AnyView> where Content: View {
+public class BaseHostingViewController<Content>: UIHostingController<AnyView> where Content: View {
     public init(shouldShowNavigationBar: Bool = false,
                 rootView: Content) {
         super.init(rootView: AnyView(rootView
@@ -19,7 +19,7 @@ class BaseHostingViewController<Content>: UIHostingController<AnyView> where Con
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.isNavigationBarHidden = true
     }
