@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import SwiftUI
 
 // Validate the formatting of an email
 private let firstPart = "[A-Z0-9a-z]([A-Z0-9a-z._%+-]{0,30}[A-Z0-9a-z])?"
@@ -41,6 +42,10 @@ public extension String {
 
     var asData: Data? {
         data(using: .utf8)
+    }
+    
+    var asDouble: Double {
+        return Double(self) ?? 0.0
     }
 
     func capAt(_ maxLength: Int) -> String {
@@ -103,18 +108,6 @@ public extension String {
 }
 
 public extension String {
-    var intValue: Int {
-        return Int(self) ?? 0
-    }
-    
-    var doubleValue: Double {
-        return Double(self) ?? 0.0
-    }
-        
-    static func isNilOrEmpty(_ string: String?) -> Bool {
-        return string?.isEmpty ?? true
-    }
-        
     func addAttribute(color: UIColor) -> NSMutableAttributedString {
         return NSMutableAttributedString(string: self, attributes: [.foregroundColor: color])
     }
@@ -145,14 +138,6 @@ public extension String {
         let maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: height)
         let actualSize = self.boundingRect(with: maxSize, options: [.usesLineFragmentOrigin], attributes: [.font: font], context: nil)
         return actualSize.width
-    }
-    
-    var image: UIImage? {
-        return UIImage(named: self)
-    }
-    
-    var sysImage: UIImage? {
-        return UIImage(systemName: self)
     }
     
     func getFont(fontSize: CGFloat, isBold: Bool = false) -> UIFont {
@@ -280,5 +265,31 @@ public extension String {
             bundle = Bundle(path: path)
         }
         self = bundle?.localizedString(forKey: key, value: nil, table: nil) ?? key
+    }
+}
+
+public extension String {
+    var uiImage: UIImage? {
+        return UIImage(named: self)
+    }
+    
+    var uiSystemImage: UIImage? {
+        return UIImage(systemName: self)
+    }
+    
+    var image: Image {
+        return Image(self)
+    }
+    
+    var systemImage: Image {
+        return Image(systemName: self)
+    }
+    
+    var color: Color {
+        return Color(hex: self)
+    }
+    
+    var uiColor: UIColor {
+        return UIColor(self)
     }
 }
