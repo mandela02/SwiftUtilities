@@ -9,7 +9,7 @@ import Foundation
 
 public struct UserDefault<T> {
     let key: String
-    let defaultValue: T
+    public let defaultValue: T
     
     private let userDefault = UserDefaults.standard
     
