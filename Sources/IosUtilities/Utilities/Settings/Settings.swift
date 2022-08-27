@@ -13,7 +13,7 @@ public struct UserDefault<T> {
     
     private let userDefault = UserDefaults.standard
     
-    init(key: String, defaultValue: T) {
+    public init(key: String, defaultValue: T) {
         self.key = key
         self.defaultValue = defaultValue
     }

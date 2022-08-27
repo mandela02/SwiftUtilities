@@ -270,3 +270,15 @@ public extension StringProtocol {
         FileManager.default.deleteFile(at: fileURL)
     }
 }
+
+public extension String {
+    init(resourceName: String, localizedKey key: String) {
+        var bundle: Bundle? = Bundle.main
+        let resourceName = resourceName
+        if let path = Bundle.main.path(forResource: resourceName,
+                                       ofType: "lproj") {
+            bundle = Bundle(path: path)
+        }
+        self = bundle?.localizedString(forKey: key, value: nil, table: nil) ?? key
+    }
+}
