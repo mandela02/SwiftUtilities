@@ -9,7 +9,7 @@ import Foundation
 
 public struct UserDefault<T> {
     let key: String
-    public let defaultValue: T
+    let defaultValue: T
     
     private let userDefault = UserDefaults.standard
     
@@ -18,7 +18,7 @@ public struct UserDefault<T> {
         self.defaultValue = defaultValue
     }
     
-    var value: T {
+    public var value: T {
         get {
             if let value = userDefault.object(forKey: key) as? T {
                 return value
