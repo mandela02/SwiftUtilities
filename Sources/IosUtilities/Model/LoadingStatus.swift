@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum LoadingStatus {
+public enum LoadingStatus: Equatable {
     case initial
     case inProcess
     case success
