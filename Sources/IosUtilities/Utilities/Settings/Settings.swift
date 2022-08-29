@@ -30,7 +30,7 @@ public struct UserDefault<T> {
             }
         }
         set {
-            userDefault?.set(newValue, forKey: key)
+            userDefault?.setValue(newValue, forKey: key)
         }
     }
 }
