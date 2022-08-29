@@ -13,10 +13,10 @@ public struct UserDefault<T> {
     
     private let userDefault: UserDefaults?
     
-    public init(store: String, key: String, defaultValue: T) {
+    public init(userDefault: UserDefaults? = .standard, key: String, defaultValue: T) {
         self.key = key
         self.defaultValue = defaultValue
-        self.userDefault = UserDefaults(suiteName: store)
+        self.userDefault = userDefault
     }
     
     public var value: T {
@@ -31,7 +31,6 @@ public struct UserDefault<T> {
         }
         set {
             userDefault?.set(newValue, forKey: key)
-            userDefault?.synchronize()
         }
     }
 }
