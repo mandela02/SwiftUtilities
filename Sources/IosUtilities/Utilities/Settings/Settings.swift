@@ -24,7 +24,7 @@ public struct UserDefault<T> {
             if let value = userDefault?.object(forKey: key) as? T {
                 return value
             } else {
-                userDefault?.set(defaultValue, forKey: key)
+                userDefault?.setValue(defaultValue, forKey: key)
                 userDefault?.synchronize()
                 return defaultValue
             }
