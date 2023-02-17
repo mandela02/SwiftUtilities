@@ -28,3 +28,31 @@ public extension Array where Element == String {
         self.isEmpty ? nil : self.joined(separator: ", ")
     }
 }
+
+extension Array where Element == Double {
+    func sum() -> Double {
+        self.reduce(0, +)
+    }
+}
+
+extension Array {
+    var isNotEmpty: Bool {
+        return !isEmpty
+    }
+    
+    mutating func safeInsert(contentsOf elements: [Element], at index: Int) throws {
+        if self.count >= index {
+            self.insert(contentsOf: elements, at: index)
+        } else {
+            throw NSError(domain: "Out of range when trying to insert at \(index)", code: 999)
+        }
+    }
+    
+    mutating func safeInsert(_ element: Element, at index: Int) throws {
+        if self.count >= index {
+            self.insert(element, at: index)
+        } else {
+            throw NSError(domain: "Out of range when trying to insert at \(index)", code: 999)
+        }
+    }
+}
