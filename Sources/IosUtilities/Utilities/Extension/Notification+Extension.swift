@@ -6,8 +6,3 @@
 //
 
 import Foundation
-
-public extension Notification.Name {
-    static let themeDidChange = Notification.Name("THEME_DID_CHANGE")
-    static let languageDidChange = Notification.Name("LANGUAGE_DID_CHANGE")
-}
